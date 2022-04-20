@@ -1,0 +1,22 @@
+CREATE DATABASE db_Classificado
+
+USE db_Classificado
+
+CREATE TABLE Usuario
+(
+	ID_Usuario INT PRIMARY KEY NOT NULL,
+	Nome VARCHAR(50) NOT NULL,
+	Senha VARCHAR(50) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
+	Telefone VARCHAR(11) NOT NULL,
+	Endereco VARCHAR(200) NOT NULL
+)
+
+CREATE TABLE Anuncio
+(
+	Classificacao INT NOT NULL,
+	Descricao VARCHAR(200),
+	Nota FLOAT NOT NULL,
+	FK_Usuario INT NOT NULL,
+	FOREIGN KEY (FK_Usuario) REFERENCES Usuario (ID_Usuario)
+)

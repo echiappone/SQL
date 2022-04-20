@@ -1,0 +1,38 @@
+CREATE DATABASE db_Ecommerce
+
+USE db_Ecommerce
+
+CREATE TABLE Produto
+(
+	ID_Produto INT PRIMARY KEY NOT NULL,
+	NomeProduto VARCHAR(100) NOT NULL,
+	Descricao VARCHAR(200) NOT NULL,
+	Preco FLOAT NOT NULL,
+	Quant INT NOT NULL
+)
+
+CREATE TABLE Estoque
+(
+	ID_Estoque INT PRIMARY KEY NOT NULL,
+	QuantEstoque INT NOT NULL,
+	FK_Produto INT NOT NULL,
+	FOREIGN KEY (FK_Produto) REFERENCES Produto (ID_Produto)
+)
+
+CREATE TABLE Usuario
+(
+	ID_Usuario INT PRIMARY KEY NOT NULL,
+	Nome VARCHAR(50) NOT NULL,
+	Senha VARCHAR(50) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
+	Endereco VARCHAR(200) NOT NULL,
+)
+
+CREATE TABLE Carrinho
+(
+	Valor FLOAT NOT NULL,
+	FK_Usuario INT NOT NULL,
+	FK_Produto INT NOT NULL,
+	FOREIGN KEY (FK_Usuario) REFERENCES Usuario (ID_Usuario),
+	FOREIGN KEY (FK_Produto) REFERENCES Produto (ID_Produto)
+)
